@@ -26,3 +26,9 @@ heroku config:add METEOR_SETTINGS='{"herp":"derp"}'
 
 
 You need to have a verified account so the buildpack can add a `mongohq:sandbox` addon.
+
+## Websockets
+
+To enable websockets on Heroku, you will need to enable the "labs" feature:
+
+```heroku labs:enable websockets```
