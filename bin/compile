@@ -76,9 +76,9 @@ if [ -f "${BUILD_DIR}/nodeversion" ]; then
 fi
 # add a warning if no version of node specified
 if [ "$requested_node_ver" == "" ]; then
-  requested_node_ver="latest"
+  requested_node_ver="0.10.24"
   echo
-  echo "No version of Node.js specified in nodeversion, using 'latest'" | indent
+  echo "No version of Node.js specified in nodeversion, using '${requested_node_ver}'" | indent
   echo
 fi
 
