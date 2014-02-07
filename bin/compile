@@ -71,14 +71,14 @@ echo "-----> Resolving engine versions"
 requested_node_ver=""
 if [ -f "${BUILD_DIR}/nodeversion" ]; then
   echo " - nodeversion file detected, using for semvar" | indent
-  requested_node_var=$(cat $BUILD_DIR/nodeversion)
+  requested_node_ver=$(cat $BUILD_DIR/nodeversion)
+  echo " - requested version: $requested_node_ver" | indent
 fi
 # add a warning if no version of node specified
-if [ "${requested_node_ver}" == "" ]; then
+if [ "$requested_node_ver" == "" ]; then
   requested_node_ver="latest"
   echo
-  echo "No version of Node.js specified in package.json, using latest stable, see:" | indent
-  echo "https://devcenter.heroku.com/articles/nodejs-versions" | indent
+  echo "No version of Node.js specified in nodeversion, using 'latest'" | indent
   echo
 fi
 
