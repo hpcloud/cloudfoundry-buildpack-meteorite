@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-# fail fast
+# fail fast
 set -e
 
 # debug
@@ -140,6 +140,8 @@ echo "Setting up MONGO_URL in .profile.d"
 mkdir -p "$BUILD_DIR"/.profile.d
 cat > "$BUILD_DIR"/.profile.d/mongo.sh <<EOF
   #!/bin/sh
+
+set
 
   export MONGO_URL=\${MONGO_URL:-\$MONGOHQ_URL};
 EOF
