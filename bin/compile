@@ -100,6 +100,19 @@ export npm_config_prefix="$VENDORED_MODULES"
 export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"
 
+echo "-----> Creating package.json if you haven't already"
+set
+find . -type f
+[ -f package.json ] || cat <<EOJSON
+{
+  "name": "Meteor-app",
+  "version": "0.0.0",
+  "engines": {
+    "node": "0.8.24"
+  }
+}
+EOJSON
+
 
 ############################################
 # install meteorite
