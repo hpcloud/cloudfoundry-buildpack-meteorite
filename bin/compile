@@ -137,7 +137,8 @@ rm "$CACHE_DIR"/bundle.tar.gz
 # Prepare ENV vars
 ############################################
 echo "Setting up MONGO_URL in .profile.d"
-set
+echo $VCAP_APPLICATION | jq
+echo $VCAP_SERVICES | jq
 mkdir -p "$BUILD_DIR"/.profile.d
 cat > "$BUILD_DIR"/.profile.d/mongo.sh <<EOF
   #!/bin/sh
