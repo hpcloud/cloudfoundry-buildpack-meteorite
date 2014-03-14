@@ -138,10 +138,11 @@ rm "$CACHE_DIR"/bundle.tar.gz
 ############################################
 echo "Setting up MONGO_URL in .profile.d"
 
+echo 'Looking for a service tagged "mongodb" in the following $VCAP_SERVICES...'
 echo $VCAP_SERVICES
 
 mkdir -p "$BUILD_DIR"/.profile.d
-cat > "$BUILD_DIR"/.profile.d/mongo.sh <<EOF
+cat | tee "$BUILD_DIR"/.profile.d/mongo.sh <<EOF
   #!/bin/sh
 
   export ROOT_URL=\${ROOT_URL:-`ruby -e 'require "json"; puts "http://#{JSON.parse(ENV["VCAP_APPLICATION"])["application_uris"][0]}"'`}
