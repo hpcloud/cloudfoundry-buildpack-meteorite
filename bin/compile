@@ -144,9 +144,8 @@ mkdir -p "$BUILD_DIR"/.profile.d
 cat > "$BUILD_DIR"/.profile.d/mongo.sh <<EOF
   #!/bin/sh
 
-  export ROOT_URL=`echo $VCAP_APPLICATION  | ruby -e 'require "json"; puts "http://#{JSON.parse(STDIN.read)["application_uris"][0]}"'`
-
-  export MONGO_URL=\${MONGO_URL:-\$MONGOHQ_URL};
+  export ROOT_URL=`ruby -e 'require "json"; puts "http://#{JSON.parse(ENV["VCAP_APPLICATION"])["application_uris"][0]}"'`
+  export MONGO_URL=\${MONGO_URL:-\$MONGOHQ_URL:-`ruby -e "require 'json'; puts JSON.parse(ENV['VCAP_SERVICES']).find do |key,value| value[0]['tags'].include? 'mongodb' end[1][0]['credentials']['uri']"`};
 EOF
 
 # vendor node into the slug
