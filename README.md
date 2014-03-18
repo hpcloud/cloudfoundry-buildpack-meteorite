@@ -1,13 +1,15 @@
 # Cloud Foundry buildpack: Meteorite
 
-This build pack allows you to easily deploy meteor apps to Cloud Foundry using [meteorite](http://github.com/oortcloud/meteorite). It's easy to use different branches of meteor and any smart package you can lay your hands on.
+This buildpack is derived from [heroku-buildpack-meteorite](https://github.com/oortcloud/heroku-buildpack-meteorite) by [sweetleon](https://github.com/sweetleon).
+
+This buildpack enables you to easily deploy meteor apps to Cloud Foundry using [meteorite](https://github.com/cloudfoundry-community/cloudfoundry-buildpack-meteorite). It's easy to use different branches of meteor and any smart package you can lay your hands on.
 
 ## Usage
 
 Create a CF app and bind it to a MongoDB service. Then run the following command in your terminal:
 
 ```
-cf push [APP_NAME] -b https://github.com/oortcloud/heroku-buildpack-meteorite.git
+cf push [APP_NAME] -b https://github.com/cloudfoundry-community/cloudfoundry-buildpack-meteorite.git
 ```
 
 ## NOTES
